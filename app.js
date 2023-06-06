@@ -22,6 +22,7 @@ const orderRoutes = require('./routes/orders')
 const userRoutes = require('./routes/users')
 const purchaseRoutes = require('./routes/purchase')
 
+
 var cors = require('cors')
 
 const app = express();
@@ -46,6 +47,10 @@ app.use('/password',passwordRoutes)
 app.use(orderRoutes)
 
 app.use('/users',userRoutes)
+
+app.use((req,res) => {
+    res.sendFile(path.join(__dirname,`public/${req.url}`))
+})
 
 User.hasMany(Expense)
 Expense.belongsTo(User)
