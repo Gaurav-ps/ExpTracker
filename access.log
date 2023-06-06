@@ -1,0 +1,6 @@
+::1 - - [03/Jun/2023:05:30:17 +0000] "OPTIONS /expense/get-expenses HTTP/1.1" 204 0 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [03/Jun/2023:05:30:17 +0000] "GET /expense/get-expenses HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [03/Jun/2023:05:30:48 +0000] "OPTIONS /premium/showLeaderBoard HTTP/1.1" 204 0 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [03/Jun/2023:05:30:48 +0000] "GET /premium/showLeaderBoard HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [05/Jun/2023:11:37:51 +0000] "OPTIONS /expense/get-expenses HTTP/1.1" 204 0 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [05/Jun/2023:11:37:51 +0000] "GET /expense/get-expenses HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
