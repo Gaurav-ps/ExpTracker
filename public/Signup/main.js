@@ -8,7 +8,7 @@ async function onsignup(event){
             userId: 1
         }
 
-        let postResponse = axios.post('http://52.66.13.147:4000/users/signup',obj)
+        let postResponse = axios.post('http://15.206.211.185:4000/users/signup',obj)
         let val = await postResponse;
         alert(val.data.message)
     }
