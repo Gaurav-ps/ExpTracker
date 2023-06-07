@@ -6,7 +6,7 @@ async function login(event){
             Password: event.target.password.value
         }
 
-        let postResponse = axios.post('http://52.66.13.147:4000/users/login',obj)
+        let postResponse = axios.post('http://15.206.211.185:4000/users/login',obj)
         let val = await postResponse;
         if(val.status === 200)
         {
