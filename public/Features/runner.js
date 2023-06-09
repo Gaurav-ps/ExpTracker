@@ -14,9 +14,13 @@ function removePremium(){
     document.getElementById('premiumUser').innerHTML += 'You are a premium User'
 }
 
+
 window.addEventListener('DOMContentLoaded', async() => {
     const token = localStorage.getItem('token')
-    const response = await axios.get('http://15.206.211.185:4000/expense/get-expenses', { headers: {'Authorization' : token}})
+    
+    const response = await axios.get('http://3.6.101.169:4000/expense/get-expenses', { headers: {'Authorization' : token}})
+    
+    //const response = await axios.get('http://localhost:4000/expense/get-expenses', { headers: {'Authorization' : token}})
     const decodeToken = parseJwt(token)
     const isPremiumUser = decodeToken.ispremiumuser
     if(isPremiumUser)
@@ -46,7 +50,9 @@ async function onsignup(event)
             Description : event.target.Reason.value,
             Category : document.getElementById('categories').value,
             }
-            let postResponse = await axios.post('http://15.206.211.185:4000/expense/add-expenses',obj, {headers: {'Authorization': token}})
+            let postResponse = await axios.post('http://3.6.101.169:4000/expense/add-expenses',obj, {headers: {'Authorization': token}})
+            
+            //let postResponse = await axios.post('http://localhost:4000/expense/add-expenses',obj, {headers: {'Authorization': token}})
             
                 showOnScreen(postResponse.data.expenseDetails)
         } 
@@ -67,7 +73,9 @@ async function showOnScreen(obj)
             delButton.value = 'Delete';
             delButton.onclick = async() => {
                 const token = localStorage.getItem('token')
-                let deleteResponse = await axios.delete(`http://15.206.211.185:4000/expense/delete-expenses/${obj.id}`,{headers: {'Authorization': token}})
+                let deleteResponse = await axios.delete(`http://3.6.101.169:4000/expense/delete-expenses/${obj.id}`,{headers: {'Authorization': token}})
+                //let deleteResponse = await axios.delete(`http://localhost:4000/expense/delete-expenses/${obj.id}`,{headers: {'Authorization': token}})
+                
                 try{
                     parent.removeChild(child);
                 }
@@ -89,7 +97,9 @@ function showLeaderboard(){
         inputElement.value = 'Show Leaderboard'
         inputElement.onclick = async() => {
             const token = localStorage.getItem('token')
-            const userLeaderBoardArray = await axios.get('http://15.206.211.185:4000/premium/showLeaderBoard',{ headers: {'Authorization' : token}})
+            const userLeaderBoardArray = await axios.get('http://3.6.101.169:4000/premium/showLeaderBoard',{ headers: {'Authorization' : token}})
+            //const userLeaderBoardArray = await axios.get('http://localhost:4000/premium/showLeaderBoard',{ headers: {'Authorization' : token}})
+            
             console.log(userLeaderBoardArray)
     
             var leaderElement = document.getElementById('leaderboard')
@@ -104,7 +114,8 @@ function showLeaderboard(){
 async function download(){
     try{
         const token = localStorage.getItem('token')
-        let response = await axios.get('http://15.206.211.185:4000/expense/download', { headers: {"Authorization" : token} })
+        let response = await axios.get('http://3.6.101.169:4000/expense/download', { headers: {"Authorization" : token} })
+        //let response = await axios.get('http://localhost:4000/expense/download', { headers: {"Authorization" : token} })
 
         if(response.status === 201){
                 //the backend is essentially sending a download link
@@ -123,13 +134,17 @@ async function download(){
 
 document.getElementById('rzp-button').onclick = async function(e) {
     const token = localStorage.getItem('token')
-    const response = await axios.get('http://15.206.211.185:4000/purchase/premiummembership',{headers: {'Authorization': token}})
+    const response = await axios.get('http://3.6.101.169:4000/purchase/premiummembership',{headers: {'Authorization': token}})
+    //const response = await axios.get('http://localhost:4000/purchase/premiummembership',{headers: {'Authorization': token}})
+    
     console.log(response);
     var options = {
         "key": response.data.key_id,
         "order_id": response.data.order.id,
         "handler": async function (response){
-            const res = await axios.post('http://15.206.211.185:4000/purchase/updatetransactionstatus',{
+            const res = await axios.post('http://3.6.101.169:4000/purchase/updatetransactionstatus',{
+            //const res = await axios.post('http://localhost:4000/purchase/updatetransactionstatus',{
+                
                 order_id: options.order_id,
                 payment_id: response.razorpay_payment_id,
             },{headers: {'Authorization': token}})
